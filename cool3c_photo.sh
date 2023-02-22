@@ -1,6 +1,8 @@
 #!/bin/sh
 
-for i in *
-do
-convert * -resize 1280x800\! cool3c_$i
+mkdir -p thumbnail/
+
+for i in `file -i * | grep "image/" | cut -d: -f1` ;do
+convert -resize 1280x800\> $i thumbnail/cool3c_$i
+echo converting $i ...
 done
